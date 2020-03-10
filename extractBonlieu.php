@@ -1,7 +1,7 @@
 <?php
 
-for ($u = 1838; $u < 1850; $u++) {
-    $url = "http://www.forumsirius.fr/orion/bonlieu.phtml?spec=".$u;
+for ($u = 4536; $u < 4560; $u++) {
+    $url = "http://www.forumsirius.fr/orion/bonlieu.phtml?seance=".$u;
 
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -12,11 +12,12 @@ for ($u = 1838; $u < 1850; $u++) {
     $html = new DOMDocument();
     @$html->loadHTML($raw);
     $xpath = new DOMXPath($html);
-    $domExemple = $xpath->query('//td[@class="spLoc"]');
+    $domExemple = $xpath->query('//td[@class="scPrix"]');
 
-    $i = 1;
+  
     foreach ($domExemple as $exemple) {
          $result = $exemple->nodeValue;
-         echo $result."\n";
+         echo $u." ".$result."\n";
+    break;
     }
 }
